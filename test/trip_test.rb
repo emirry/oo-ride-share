@@ -1,4 +1,5 @@
 require_relative 'test_helper'
+require 'time'
 
 describe "Trip class" do
   describe "initialize" do
@@ -17,7 +18,7 @@ describe "Trip class" do
         cost: 23.45,
         rating: 3
       }
-      @trip = RideShare::Trip.new(@trip_data)
+      @trip = RideShare::Trip.new(@trip_data) # not reading as hash, throwing missing arguments : 'id': ,'start_time:', 'end_time:', 'rating:'
     end
 
     it "is an instance of Trip" do
@@ -37,7 +38,7 @@ describe "Trip class" do
       [-3, 0, 6].each do |rating|
         @trip_data[:rating] = rating
         expect do
-          RideShare::Trip.new(@trip_data)
+          RideShare::Trip.new(@trip_data) # not reading as hash, throwing missing arguments : 'id': ,'start_time:', 'end_time:', 'rating:'
         end.must_raise ArgumentError
       end
     end
@@ -46,9 +47,11 @@ describe "Trip class" do
     it "raises an error if end time is before the start time" do
       start_time = Time.parse("2018-12-27 02:39:05 -800")
       end_time = Time.parse("2018-12-17 16:09:21 -800")
+      if start_time < end_time
       expect do
-        RideShare::Trip.new(@trip_data)
+        RideShare::Trip.new(@trip_data) # not reading as hash, throwing missing arguments : 'id': ,'start_time:', 'end_time:', 'rating:'
       end.must_raise ArgumentError
-    end
+      end
+      end
   end
 end

@@ -61,6 +61,12 @@ module RideShare
       passenger.add_trip(self)
     end
 
+    def duration(record) #return duration in seconds
+      start_time = Time.parse(record[:start_time])
+      end_time = Time.parse(record[:end_time])
+      duration = end_time - start_time
+    end
+
     private
 
     def self.from_csv(record) #Child method
@@ -70,8 +76,8 @@ module RideShare
       return self.new(
                id: record[:id],
                passenger_id: record[:passenger_id],
-               start_time: record[:start_time],
-               end_time: record[:end_time],
+               start_time: start_time,#record[:start_time],
+               end_time: end_time, #record[:end_time],
                cost: record[:cost],
                rating: record[:rating]
              )
