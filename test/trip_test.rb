@@ -41,5 +41,14 @@ describe "Trip class" do
         end.must_raise ArgumentError
       end
     end
+
+    #Write a test for Time.parse
+    it "raises an error if end time is before the start time" do
+      start_time = Time.parse("2018-12-27 02:39:05 -800")
+      end_time = Time.parse("2018-12-17 16:09:21 -800")
+      expect do
+        RideShare::Trip.new(@trip_data)
+      end.must_raise ArgumentError
+    end
   end
 end

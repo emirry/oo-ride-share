@@ -1,4 +1,5 @@
 require 'csv'
+require 'time'
 
 require_relative 'csv_record'
 
@@ -35,6 +36,11 @@ module RideShare
 
       if @rating > 5 || @rating < 1
         raise ArgumentError.new("Invalid rating #{@rating}")
+      end
+
+      #1.2 - 3.
+      if end_time < start_time
+        raise ArgumentError.new("End time is before the start time")
       end
     end
 
