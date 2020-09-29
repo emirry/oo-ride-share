@@ -18,7 +18,7 @@ module RideShare
 
     private
 
-    def self.from_csv(record)
+    def self.from_csv(record) #Child class
       return new(
         id: record[:id],
         name: record[:name],

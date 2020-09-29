@@ -21,7 +21,7 @@ module RideShare
 
     def inspect
       # Make puts output more useful
-      return "#<#{self.class.name}:0x#{object_id.to_s(16)} \
+      return "#<#{self.class.name}:0x#{object_id.to_s(16)} \ # What is this returning?
               #{trips.count} trips, \
               #{drivers.count} drivers, \
               #{passengers.count} passengers>"

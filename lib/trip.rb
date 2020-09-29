@@ -57,7 +57,10 @@ module RideShare
 
     private
 
-    def self.from_csv(record)
+    def self.from_csv(record) #Child method
+      start_time = Time.parse(record[:start_time])
+      end_time = Time.parse(record[:end_time])
+
       return self.new(
                id: record[:id],
                passenger_id: record[:passenger_id],
