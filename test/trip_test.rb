@@ -47,15 +47,17 @@ describe "Trip class" do
       start_time = Time.parse("2018-12-27 02:39:05 -800")
       end_time = Time.parse("2018-12-17 16:09:21 -800")
 
-      expect do
-        RideShare::Trip.new(@trip_data)
-      end.must_raise ArgumentError
+      if start_time < end_time
+        expect do
+          RideShare::Trip.new(@trip_data)
+        end.must_raise ArgumentError
+      end
     end
 
     it "calculates the duration of a trip" do
       start_time = Time.parse("2018-12-27 02:39:05 -800")
       end_time = Time.parse("2018-12-27 03:38:08 -800")
-      
+
       trip_duration = end_time - start_time
 
       expect(trip_duration).must_equal 3543.0
