@@ -40,7 +40,7 @@ module RideShare
 
       #1.2 - 3.
       if end_time < start_time
-        raise ArgumentError.new("End time is before the start time")
+        raise ArgumentError.new("Invalid time.End time is before the start time")
       end
     end
 
@@ -61,10 +61,11 @@ module RideShare
       passenger.add_trip(self)
     end
 
-    def duration(record) #return duration in seconds
-      start_time = Time.parse(record[:start_time])
-      end_time = Time.parse(record[:end_time])
-      duration = end_time - start_time
+    def calculate_trip_duration
+      trip_duration_total = 0
+      trip_duration_total = end_time - start_time
+
+      return trip_duration_total
     end
 
     private
