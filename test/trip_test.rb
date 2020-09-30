@@ -62,6 +62,6 @@ describe "Trip class" do
       trip_duration = end_time - start_time
 
       expect(trip_duration).must_equal 3543.0
-    end
+
   end
 end
