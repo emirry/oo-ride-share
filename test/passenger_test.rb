@@ -69,39 +69,40 @@ describe "Passenger class" do
   end
 
   describe "net_expenditures" do
-    # You add tests for the net_expenditures method
     it "calculates the total amount a passenger spent on a trip" do
-      trip_one = {
-          id: 8,
-          passenger: RideShare::Passenger.new(
-              id: 1,
-              name: "Ada",
-              phone_number: "412-432-7640"
-          ),
-          start_time: Time.parse("2018-12-17 02:39:05 -0800"),
-          end_time: Time.parse("2018-12-17 03:38:08 -0800"),
-          cost: 23.45,
-          rating: 3
-      }
+      passenger = RideShare::Passenger.new(id: 1, name: "Smithy", phone_number: "353-533-5334")
 
-      trip_two = {
+      trip = RideShare::Trip.new(
           id: 8,
-          passenger: RideShare::Passenger.new(
-              id: 1,
-              name: "Ada",
-              phone_number: "412-432-7640"
-          ),
+          passenger: passenger,
           start_time: Time.parse("2018-12-17 02:39:05 -0800"),
           end_time: Time.parse("2018-12-17 03:38:08 -0800"),
           cost: 23.45,
           rating: 3
-      }
+      )
+
+      trip_two = RideShare::Trip.new(
+          id: 9,
+          passenger: passenger,
+          start_time: Time.parse("2018-12-17 02:39:05 -0800"),
+          end_time: Time.parse("2018-12-17 03:38:08 -0800"),
+          cost: 23.45,
+          rating: 3
+      )
+
+      passenger.add_trip(trip)
+      passenger.add_trip(trip_two)
 
       total_trip_spent = 46.90
+      net_expenditures = passenger.net_expenditures
 
-      expect(total_trip_spent).must_equal total_trip_spent
-
-      #Make a test for 0 trips/cost? can this test be written with a before or let?
+      expect(net_expenditures).must_equal total_trip_spent
     end
+
+    # it "raises an ArgumentError if a passenger has 0 trips" do
+    #   expect do
+    #     RideShare::Passenger.new()
+    #   end.must_raise ArgumentError
+    # end
   end
 end

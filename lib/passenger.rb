@@ -17,7 +17,10 @@ module RideShare
     end
 
     def net_expenditures
-      passenger_total_spent += @trips.cost
+      passenger_total_spent = 0
+      @trips.each do |trip|
+        passenger_total_spent += trip.cost
+      end
       return passenger_total_spent
     end
 
