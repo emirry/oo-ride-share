@@ -97,8 +97,8 @@ module RideShare
                id: record[:id],
                passenger_id: record[:passenger_id],
                driver_id: record[:driver_id],
-               start_time: start_time,#record[:start_time],
-               end_time: end_time, #record[:end_time],
+               start_time: start_time,
+               end_time: end_time,
                cost: record[:cost],
                rating: record[:rating]
              )
