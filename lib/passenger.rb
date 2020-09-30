@@ -29,11 +29,14 @@ module RideShare
       return passenger_total_spent
     end
 
-    def total_time_spent(trips)
+    def total_time_spent
       time = 0
-      @trips.each do |trip|
-        trip_time = calculate_trip_duration(trip)
-        time += trip_time
+      if @trips == []
+        raise ArgumentError.new("This passenger has 0 trips")
+      end
+      @trips.each do |trip| #not sure if this method can be called?
+      trip_time =  trip.calculate_trip_duration
+      time += trip_time
       end
       return time
     end
