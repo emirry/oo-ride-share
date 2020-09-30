@@ -99,10 +99,10 @@ describe "Passenger class" do
       expect(net_expenditures).must_equal total_trip_spent
     end
 
-    # it "raises an ArgumentError if a passenger has 0 trips" do
-    #   expect do
-    #     RideShare::Passenger.new()
-    #   end.must_raise ArgumentError
-    # end
+    it "raises an ArgumentError if a passenger has 0 trips" do
+      expect do
+        RideShare::Trip.new()
+      end.must_raise ArgumentError
+    end
   end
 end

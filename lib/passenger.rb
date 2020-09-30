@@ -18,6 +18,11 @@ module RideShare
 
     def net_expenditures
       passenger_total_spent = 0
+
+      if @trips == []
+        raise ArgumentError.new("This passenger has 0 trips")
+      end
+
       @trips.each do |trip|
         passenger_total_spent += trip.cost
       end
