@@ -76,9 +76,11 @@ describe "Passenger class" do
   describe "total_time_spent" do
     it "calculates the total amount of time a passenger spent on all trips" do
       passenger = RideShare::Passenger.new(id: 1, name: "Smithy", phone_number: "353-533-5334")
+      driver = RideShare::Driver(id: 3, name: "Test Driver", vin: "12345678912345678")
       trip = RideShare::Trip.new(
           id: 8,
           passenger: passenger,
+          driver: driver,
           start_time: Time.parse("2018-12-17 02:39:05 -0800"),
           end_time: Time.parse("2018-12-17 03:38:08 -0800"),
           cost: 23.45,
@@ -87,6 +89,7 @@ describe "Passenger class" do
       trip_two = RideShare::Trip.new(
           id: 9,
           passenger: passenger,
+          driver: driver,
           start_time: Time.parse("2018-12-17 02:39:05 -0800"),
           end_time: Time.parse("2018-12-17 03:38:08 -0800"),
           cost: 23.45,
