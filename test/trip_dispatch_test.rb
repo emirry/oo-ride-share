@@ -80,11 +80,8 @@ describe "TripDispatcher class" do
   # come back to this
   # TODO: un-skip for Wave 2
   describe "drivers" do
-<<<<<<< HEAD
-    xdescribe "find_driver method" do
-=======
     describe "find_driver method" do
->>>>>>> ab15f67d1bc16c27238f9fb976e035bf86ba3dbe
+
       before do
         @dispatcher = build_test_dispatcher
       end
