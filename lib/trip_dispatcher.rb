@@ -43,10 +43,37 @@ module RideShare
         passenger = find_passenger(trip.passenger_id)
         driver = find_driver(trip.driver_id)
         trip.connect(passenger,driver)
-
       end
-
       return trips
     end
+
+    #def find_first_available_driver(driver)
+    # @drivers.each do |driver|
+    #   if driver.status == :AVAILABLE
+    #   driver.status = :UNAVAILABLE
+    #   return driver
+    #   else
+    #   raise ArgumentError.new("Sorry! No available drivers")
+    #   end
+    # end
+
+    # change tests to ignore in progress trips!!!
+    #def request_trip(passenger_id)
+    # driver if driver == available (helper method?)
+    # passenger_id = Passenger.new(id, email, address)
+    # new_trip = Trip.new(
+    #   id: ??
+    #   passenger: passenger_id
+    #   passenger_id: ??
+    #   driver: find_first_available_driver(driver)
+    #   driver_id: ??
+    #   start_time: Time.now
+    #   end_time: nil
+    #   cost: nil
+    #   rating: nil
+    # )
+    #
+    # passenger.add_trip(new_trip)
+    # end
   end
 end

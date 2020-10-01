@@ -80,7 +80,11 @@ describe "TripDispatcher class" do
   # come back to this
   # TODO: un-skip for Wave 2
   describe "drivers" do
+<<<<<<< HEAD
     xdescribe "find_driver method" do
+=======
+    describe "find_driver method" do
+>>>>>>> ab15f67d1bc16c27238f9fb976e035bf86ba3dbe
       before do
         @dispatcher = build_test_dispatcher
       end
@@ -121,5 +125,34 @@ describe "TripDispatcher class" do
         end
       end
     end
+  end
+
+  describe "requesting a trip" do
+    before do
+      @dispatcher = RideShare::TripDispatcher.new
+      @passenger = RideShare::Passenger.new(id:, email:, address:)
+
+
+
+    end
+    it "creates a new trip" do
+      new_trip = RideShare::Trip.new()
+      expect(@dispatcher.request_trip(passenger_id)).must_be_instance_of new_trip
+
+
+    end
+
+    # it "updates the trip lists for driver and passenger" do
+    #
+    # end
+    #
+    # it "selected an AVAILABLE driver" do
+    #
+    # end
+    #
+    # it "raises an ArgumentError when there are 0 available drivers" do
+    #
+    # end
+
   end
 end
