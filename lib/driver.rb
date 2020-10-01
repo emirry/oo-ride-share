@@ -37,14 +37,14 @@ module RideShare
       @trips << trip
     end
 
-    def avg_rating
+    def average_rating
 
       if @trips == []
-        raise ArgumentError.new("This driver has 0 trips")
+        return 0
       end
       rating = 0
       @trips.each do |trip|
-        rating += trip[:rating]
+        rating += trip.rating
       end
       total_rating = rating.to_f / @trips.length
       return total_rating
@@ -54,7 +54,7 @@ module RideShare
 
       revenue = 0
       @trips.each do |trip|
-        cost = (trip[:cost] - 1.65) * 0.8
+        cost = (trip.cost - 1.65) * 0.8
         revenue += cost
       end
       return revenue
