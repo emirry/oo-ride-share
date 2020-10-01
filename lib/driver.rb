@@ -42,6 +42,7 @@ module RideShare
       if @trips == []
         return 0
       end
+
       rating = 0
       @trips.each do |trip|
         rating += trip.rating
@@ -64,12 +65,12 @@ module RideShare
 
     def self.from_csv(record) #Child class
 
-    return new(
-        id: record[:id],
-        name: record[:name],
-        vin: record[:vin],
-        status: record[:status]
-    )
+      return new(
+          id: record[:id],
+          name: record[:name],
+          vin: record[:vin],
+          status: record[:status]
+      )
     end
   end
 end
