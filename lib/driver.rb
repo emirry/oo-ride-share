@@ -1,7 +1,5 @@
 require_relative 'csv_record'
 
-# require_relative 'trip'
-
 module RideShare
   class Driver < CsvRecord
     attr_reader :name, :vin, :trips, :status
@@ -72,7 +70,6 @@ module RideShare
     private
 
     def self.from_csv(record) #Child class
-
       return new(
           id: record[:id],
           name: record[:name],

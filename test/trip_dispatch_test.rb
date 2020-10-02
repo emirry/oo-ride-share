@@ -23,7 +23,7 @@ describe "TripDispatcher class" do
 
       expect(dispatcher.trips).must_be_kind_of Array
       expect(dispatcher.passengers).must_be_kind_of Array
-      # expect(dispatcher.drivers).must_be_kind_of Array
+      expect(dispatcher.drivers).must_be_kind_of Array
     end
 
     it "loads the development data by default" do
@@ -77,7 +77,7 @@ describe "TripDispatcher class" do
       end
     end
   end
-  # come back to this
+
   # TODO: un-skip for Wave 2
   describe "drivers" do
     describe "find_driver method" do
@@ -143,7 +143,6 @@ describe "TripDispatcher class" do
     end
 
     it "raises an ArgumentError when there are no available drivers" do
-      # requesting 2 trips, 3rd is unavailable
       @dispatcher.request_trip(1)
       @dispatcher.request_trip(1)
 
@@ -159,7 +158,5 @@ describe "TripDispatcher class" do
      result = @dispatcher.trips.length
      expect(result).must_equal updated_trips
    end
-
-
   end
 end

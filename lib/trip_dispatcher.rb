@@ -45,7 +45,6 @@ module RideShare
 
     def request_trip(passenger_id)
       driver = find_first_available_driver
-      # length of trips + 1 for id
       passenger = find_passenger(passenger_id)
       new_trip = RideShare::Trip.new(
                 id: @trips.length + 1,
@@ -60,7 +59,6 @@ module RideShare
             )
 
       passenger.add_trip(new_trip)
-      # driver.add_trip(new_trip)
       @trips << new_trip
       driver.start_trip(new_trip)
       return new_trip

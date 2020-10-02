@@ -149,5 +149,4 @@ describe "Driver class" do
       expect(total_revenue).must_equal 17.44
     end
   end
-  #Write test for start_drive(trip)
 end

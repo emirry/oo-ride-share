@@ -49,7 +49,6 @@ describe "Trip class" do
       end
     end
 
-    #Write a test for Time.parse
     it "raises an error if end time is before the start time" do
       start_time = Time.parse("2018-12-27 02:39:05 -800")
       end_time = Time.parse("2018-12-17 16:09:21 -800")
@@ -59,7 +58,6 @@ describe "Trip class" do
           RideShare::Trip.new(@trip_data)
         end.must_raise ArgumentError
       end
-
     end
 
     it "calculates the duration of a trip" do
@@ -69,7 +67,6 @@ describe "Trip class" do
       trip_duration = end_time - start_time
 
       expect(trip_duration).must_equal 3543.0
-
   end
   end
 end
