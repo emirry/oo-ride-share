@@ -38,7 +38,6 @@ module RideShare
     end
 
     def average_rating
-
       if @trips == []
         return 0
       end
@@ -51,8 +50,8 @@ module RideShare
       return total_rating
     end
 
-    def total_revenue
 
+    def total_revenue
       if @trips == []
         return 0
       end

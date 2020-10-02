@@ -152,8 +152,14 @@ describe "TripDispatcher class" do
       }.must_raise ArgumentError
     end
 
-  #  it do
-  #   #in progress trip test
+   it "updates the trip lists for the driver and passenger" do
+     current_trips = @dispatcher.trips.length
+     result = @dispatcher.request_trip(1)
+     updated_trips = current_trips + 1
+     result = @dispatcher.trips.length
+     expect(result).must_equal updated_trips
+   end
+
 
   end
 end

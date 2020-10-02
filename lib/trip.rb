@@ -76,23 +76,16 @@ module RideShare
       @driver = driver
       driver.add_trip(self)
     end
-    #add for driver
-    #
-    # def connect(driver)
-    #   @driver = driver
-    #   driver.add_trip(self)
-    # end
 
     def calculate_trip_duration
       trip_duration_total = 0
       trip_duration_total = end_time - start_time
-
       return trip_duration_total
     end
 
     private
 
-    def self.from_csv(record) #Child method
+    def self.from_csv(record)
       start_time = Time.parse(record[:start_time])
       end_time = Time.parse(record[:end_time])
 
