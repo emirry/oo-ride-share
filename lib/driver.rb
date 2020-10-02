@@ -61,9 +61,9 @@ module RideShare
       return revenue
     end
 
-    def modify_driver(driver)
-      #set drivers status to unavailable
-      driver.status = :UNAVAILABLE
+    def start_trip(trip)
+      @status = :UNAVAILABLE
+      @trips << trip
     end
 
     private

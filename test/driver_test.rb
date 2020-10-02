@@ -133,4 +133,6 @@ describe "Driver class" do
   describe "total_revenue" do
     # You add tests for the total_revenue method
   end
+
+  #Write test for start_drive(trip)
 end

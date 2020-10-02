@@ -52,7 +52,7 @@ describe "TripDispatcher class" do
       end
     end
 
-    describe "Passenger & Trip loader methods" do
+    describe "Passenger  Trip loader methods" do
       before do
         @dispatcher = build_test_dispatcher
       end
@@ -96,7 +96,7 @@ describe "TripDispatcher class" do
       end
     end
 
-    describe "Driver & Trip loader methods" do
+    describe "Driver and Trip loader methods" do
       before do
         @dispatcher = build_test_dispatcher
       end
@@ -126,30 +126,34 @@ describe "TripDispatcher class" do
 
   describe "requesting a trip" do
     before do
-      #arrange
-      @dispatcher = RideShare::TripDispatcher.new
+      @dispatcher = build_test_dispatcher
       @passenger = RideShare::Passenger.new(id: 1, name: "Smithy", phone_number: "353-533-5334")
     end
-    it "creates a new trip" do
-      #act
-      trip = @dispatcher.request_trip(@passenger.id)
-      #assert!
-      expect(trip.passenger).must_equal @passenger
-      expect(trip).must_be_instance_of Trip
 
+    it "creates a new trip" do
+      new_trip = @dispatcher.request_trip(1)
+
+      expect(new_trip.passenger).must_be_instance_of RideShare::Passenger
+      expect(new_trip.driver).must_be_instance_of RideShare::Driver
+      expect(new_trip).must_be_instance_of RideShare::Trip
     end
 
-    # it "updates the trip lists for driver and passenger" do
-    #
-    # end
-    #
-    # it "selected an AVAILABLE driver" do
-    #
-    # end
-    #
-    # it "raises an ArgumentError when there are 0 available drivers" do
-    #
-    # end
+    it "selected an AVAILABLE driver" do
+      expect(@dispatcher.find_first_available_driver.status).must_equal :AVAILABLE
+    end
+
+    it "raises an ArgumentError when there are no available drivers" do
+      # requesting 2 trips, 3rd is unavailable
+      @dispatcher.request_trip(1)
+      @dispatcher.request_trip(1)
+
+      expect {
+        @dispatcher.request_trip(1)
+      }.must_raise ArgumentError
+    end
+
+  #  it do
+  #   #in progress trip test
 
   end
 end
