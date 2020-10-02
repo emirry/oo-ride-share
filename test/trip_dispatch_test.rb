@@ -126,17 +126,16 @@ describe "TripDispatcher class" do
 
   describe "requesting a trip" do
     before do
+      #arrange
       @dispatcher = RideShare::TripDispatcher.new
-      @passenger = RideShare::Passenger.new(id:, email:, address:)
-
-
-
+      @passenger = RideShare::Passenger.new(id: 1, name: "Smithy", phone_number: "353-533-5334")
     end
     it "creates a new trip" do
-      new_trip = RideShare::Trip.new()
-      expect(@dispatcher.request_trip(passenger_id)).must_be_instance_of new_trip
-
-
+      #act
+      trip = @dispatcher.request_trip(@passenger.id)
+      #assert!
+      expect(trip.passenger).must_equal @passenger
+      expect(trip).must_be_instance_of Trip
     end
 
     # it "updates the trip lists for driver and passenger" do

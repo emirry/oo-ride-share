@@ -3,6 +3,7 @@ require 'time'
 
 require_relative 'passenger'
 require_relative 'trip'
+require_relative 'driver'
 
 module RideShare
   class TripDispatcher
@@ -33,6 +34,46 @@ module RideShare
               #{passengers.count} passengers>"
     end
 
+    def find_first_available_driver
+      @drivers.each do |driver|
+        if driver.status == :AVAILABLE
+          # driver.status = :UNAVAILABLE
+          return driver
+          # else
+          #   raise ArgumentError.new("Sorry! No available drivers")
+        end
+      end
+    end
+
+    def request_trip(passenger_id)
+      driver = find_first_available_driver
+      # driver.modify_driver
+      # length of trips + 1 for id
+      passenger = find_passenger(passenger_id)
+      new_trip = Trip.new(
+                id: 601,
+                passenger: passenger,
+                passenger_id: passenger_id,
+                driver: driver,
+                driver_id: driver.id,
+                start_time: Time.now,
+                end_time: nil,
+                cost: nil,
+                rating: nil
+            )
+      driver.add_trip(new_trip)
+      passenger.add_trip(new_trip)
+
+    end
+
+
+
+
+
+
+
+
+
 
 
 
@@ -47,33 +88,6 @@ module RideShare
       return trips
     end
 
-    #def find_first_available_driver(driver)
-    # @drivers.each do |driver|
-    #   if driver.status == :AVAILABLE
-    #   driver.status = :UNAVAILABLE
-    #   return driver
-    #   else
-    #   raise ArgumentError.new("Sorry! No available drivers")
-    #   end
-    # end
-
-    # change tests to ignore in progress trips!!!
-    #def request_trip(passenger_id)
-    # driver if driver == available (helper method?)
-    # passenger_id = Passenger.new(id, email, address)
-    # new_trip = Trip.new(
-    #   id: ??
-    #   passenger: passenger_id
-    #   passenger_id: ??
-    #   driver: find_first_available_driver(driver)
-    #   driver_id: ??
-    #   start_time: Time.now
-    #   end_time: nil
-    #   cost: nil
-    #   rating: nil
-    # )
-    #
-    # passenger.add_trip(new_trip)
-    # end
   end
 end
+
