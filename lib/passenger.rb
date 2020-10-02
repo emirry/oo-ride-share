@@ -22,7 +22,7 @@ module RideShare
       passenger_total_spent = 0
 
       if @trips == []
-        raise ArgumentError.new("This passenger has 0 trips")
+        raise ArgumentError.new("Passenger has 0 trips")
       end
 
       @trips.each do |trip|
@@ -33,12 +33,14 @@ module RideShare
 
     def total_time_spent
       time = 0
+
       if @trips == []
-        raise ArgumentError.new("This passenger has 0 trips")
+        raise ArgumentError.new("Passenger has 0 trips")
       end
-      @trips.each do |trip| #not sure if this method can be called?
-      trip_time =  trip.calculate_trip_duration
-      time += trip_time
+
+      @trips.each do |trip|
+        trip_time =  trip.calculate_trip_duration
+        time += trip_time
       end
       return time
     end

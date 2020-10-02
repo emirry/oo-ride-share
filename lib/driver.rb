@@ -12,7 +12,7 @@ module RideShare
       @name = name
       @vin = vin
       @trips = trips
-      @status = status
+      @status = status.to_sym
 
       check_status(status)
       check_vin(vin)
@@ -53,6 +53,10 @@ module RideShare
 
     def total_revenue
 
+      if @trips == []
+        return 0
+      end
+
       revenue = 0
       @trips.each do |trip|
         cost = (trip.cost - 1.65) * 0.8
@@ -61,10 +65,7 @@ module RideShare
       return revenue
     end
 
-    def modify_driver(driver)
-      #set drivers status to unavailable
-      driver.status = :UNAVAILABLE
-    end
+
 
     private
 

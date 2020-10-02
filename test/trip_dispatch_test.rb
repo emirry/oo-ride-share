@@ -127,6 +127,7 @@ describe "TripDispatcher class" do
   describe "requesting a trip" do
     before do
       #arrange
+      # @dispatcher = build_test_dispatcher
       @dispatcher = RideShare::TripDispatcher.new
       @passenger = RideShare::Passenger.new(id: 1, name: "Smithy", phone_number: "353-533-5334")
     end
@@ -134,21 +135,30 @@ describe "TripDispatcher class" do
       #act
       trip = @dispatcher.request_trip(@passenger.id)
       #assert!
-      expect(trip.passenger).must_equal @passenger
-      expect(trip).must_be_instance_of Trip
+      # expect(trip.passenger).must_be_instance_of Passenger
+      expect(trip).must_be_instance_of RideShare::Trip
     end
 
     # it "updates the trip lists for driver and passenger" do
     #
     # end
     #
-    # it "selected an AVAILABLE driver" do
+    it "selected an AVAILABLE driver" do
+      expect(@dispatcher.find_first_available_driver.status).must_equal :AVAILABLE
+    end
     #
-    # end
-    #
-    # it "raises an ArgumentError when there are 0 available drivers" do
-    #
-    # end
+    it "raises an ArgumentError when there are 0 available drivers" do
+      drivers = @dispatcher.drivers
+
+      drivers.each do |driver|
+
+        expect {
+
+          driver.status == :UNAVAILABLE
+        }.must_raise ArgumentError
+      end
+
+    end
 
   end
 end
