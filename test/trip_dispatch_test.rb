@@ -77,10 +77,11 @@ describe "TripDispatcher class" do
       end
     end
   end
-
+  # come back to this
   # TODO: un-skip for Wave 2
   describe "drivers" do
     describe "find_driver method" do
+
       before do
         @dispatcher = build_test_dispatcher
       end
@@ -128,15 +129,12 @@ describe "TripDispatcher class" do
       #arrange
       @dispatcher = RideShare::TripDispatcher.new
       @passenger = RideShare::Passenger.new(id: 1, name: "Smithy", phone_number: "353-533-5334")
-
     end
     it "creates a new trip" do
       #act
-      trip = @dispatcher.request_trip(@passenger)
-
+      trip = @dispatcher.request_trip(@passenger.id)
       #assert!
       expect(trip.passenger).must_equal @passenger
-
       expect(trip).must_be_instance_of Trip
 
     end
