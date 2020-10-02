@@ -24,7 +24,7 @@ describe "Trip class" do
         cost: 23.45,
         rating: 3
       }
-      @trip = RideShare::Trip.new(@trip_data) # not reading as hash, throwing missing arguments : 'id': ,'start_time:', 'end_time:', 'rating:'
+      @trip = RideShare::Trip.new(@trip_data)
     end
 
     it "is an instance of Trip" do
@@ -44,7 +44,7 @@ describe "Trip class" do
       [-3, 0, 6].each do |rating|
         @trip_data[:rating] = rating
         expect do
-          RideShare::Trip.new(@trip_data) # not reading as hash, throwing missing arguments : 'id': ,'start_time:', 'end_time:', 'rating:'
+          RideShare::Trip.new(@trip_data)
         end.must_raise ArgumentError
       end
     end
@@ -56,11 +56,9 @@ describe "Trip class" do
 
       if start_time < end_time
         expect do
-          RideShare::Trip.new(@trip_data) # not reading as hash, throwing missing arguments : 'id': ,'start_time:', 'end_time:', 'rating:'
+          RideShare::Trip.new(@trip_data)
         end.must_raise ArgumentError
       end
-
-
 
     end
 

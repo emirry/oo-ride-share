@@ -53,6 +53,10 @@ module RideShare
 
     def total_revenue
 
+      if @trips == []
+        return 0
+      end
+
       revenue = 0
       @trips.each do |trip|
         cost = (trip.cost - 1.65) * 0.8

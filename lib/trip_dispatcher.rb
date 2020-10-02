@@ -58,6 +58,7 @@ module RideShare
                 cost: nil,
                 rating: nil
             )
+
       passenger.add_trip(new_trip)
       # driver.add_trip(new_trip)
       @trips << new_trip
