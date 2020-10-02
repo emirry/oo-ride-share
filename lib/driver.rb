@@ -12,7 +12,7 @@ module RideShare
       @name = name
       @vin = vin
       @trips = trips
-      @status = status
+      @status = status.to_sym
 
       check_status(status)
       check_vin(vin)
